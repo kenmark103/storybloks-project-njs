@@ -4,12 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const token = searchParams.get("token");
   const slug  = searchParams.get("slug") || "";
-
-  if (token !== process.env.STORYBLOK_PREVIEW_TOKEN) {
-    return NextResponse.json({ message: "Invalid token" }, { status: 401 });
-  }
 
   (await draftMode()).enable();
 
