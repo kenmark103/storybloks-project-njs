@@ -11,7 +11,7 @@ import PostsGrid        from "@/components/PostsGrid";
 
 
 export const getStoryblokApi = storyblokInit({
-accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
+accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
 use: [apiPlugin],
 components:{
    page: Page,
