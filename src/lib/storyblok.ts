@@ -8,9 +8,13 @@ import Post from "@/components/Post";
 import Top              from "@/components/Top";
 import PostGridHolder   from "@/components/PostGridHolder";
 import PostsGrid        from "@/components/PostsGrid";
+import { draftMode } from "next/headers";
 
 export const getStoryblokApi = storyblokInit({
-accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
+accessToken: (await draftMode()).isEnabled
+      ? process.env.STORYBLOK_PREVIEW_TOKEN
+      : process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
+      
 use: [apiPlugin],
 components:{
    page: Page,

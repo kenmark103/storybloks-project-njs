@@ -4,9 +4,10 @@ import { StoryblokServerComponent } from "@storyblok/react/rsc";
 
 export async function generateStaticParams() {
   const sb = getStoryblokApi();
+  const isPreview = draftMode().isEnabled;
   const { data } = await sb.get("cdn/stories", {
     starts_with: "posts/",
-    version: "published",
+    version: isPreview ? "draft" : "published",
   });
   return data.stories.map(story => ({ slug: story.full_slug.replace("posts/", "") }));
 }
@@ -17,7 +18,7 @@ export default async function PostPage({ params }) {
 
   try {
     const { data } = await sb.get(`cdn/stories/posts/${slug}`, {
-      version: "published",
+      version: isPreview ? "draft" : "published",
     });
     if (!data.story) return notFound();
 
