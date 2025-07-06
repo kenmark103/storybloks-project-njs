@@ -1,14 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
-import { StoryblokBridge } from "@storyblok/js";
 
-export default function Bridge() {
+export default function StoryblokBridge() {
   useEffect(() => {
-    const { StoryblokBridge: Bridge } = window as any;
-    if (typeof Bridge !== "undefined") {
-      const bridge = new Bridge();
-      bridge.on(["input", "published", "change"], () => {
+    const { StoryblokBridge } = window as typeof window & {
+      StoryblokBridge?: new () => {
+        on: (event: string[], callback: () => void) => void;
+      };
+    };
+
+    if (typeof StoryblokBridge !== "undefined") {
+      const bridgeInstance = new StoryblokBridge();
+      bridgeInstance.on(["input", "published", "change"], () => {
         location.reload();
       });
     }
