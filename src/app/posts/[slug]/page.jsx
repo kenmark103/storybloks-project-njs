@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 
 export default async function PostPage({ params }) {
 
-  const isPreview = draftMode().isEnabled;
+  const isPreview = (await draftMode()).isEnabled;
 
   const sb = getStoryblokApi();
   try {
