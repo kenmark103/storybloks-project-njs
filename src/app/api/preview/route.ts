@@ -8,8 +8,7 @@ export async function GET(request: NextRequest) {
 
   (await draftMode()).enable();
 
-  // Build an absolute URL by using the incoming request URL as base
-  const base = request.url;   // e.g. 'http://localhost:3000/api/preview?...'
+  const base = request.url; 
   const redirectPath = slug === "" ? "/" : `/${slug}`;
   const redirectUrl  = new URL(redirectPath, base);
 
