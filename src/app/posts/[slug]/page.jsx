@@ -5,6 +5,7 @@ import { StoryblokServerComponent } from "@storyblok/react/rsc";
 export async function generateStaticParams() {
   const sb = getStoryblokApi();
   const isPreview = draftMode().isEnabled;
+  
   const { data } = await sb.get("cdn/stories", {
     starts_with: "posts/",
     version: isPreview ? "draft" : "published",

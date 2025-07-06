@@ -10,11 +10,12 @@ import PostGridHolder   from "@/components/PostGridHolder";
 import PostsGrid        from "@/components/PostsGrid";
 import { draftMode } from "next/headers";
 
+const isPreview = (await draftMode()).isEnabled;
 export const getStoryblokApi = storyblokInit({
-accessToken: (await draftMode()).isEnabled
+accessToken: isPreview
       ? process.env.STORYBLOK_PREVIEW_TOKEN
       : process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
-      
+
 use: [apiPlugin],
 components:{
    page: Page,

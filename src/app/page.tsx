@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers';
 export default async function Home() {
  const isPreview = (await draftMode()).isEnabled;
 const storyblokApi = getStoryblokApi();
+
 const { data } = await storyblokApi.get(`cdn/stories/tour`, 
 	{ 
 		version: isPreview ? "draft" : "published" });
