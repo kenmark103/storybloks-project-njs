@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getStoryblokApi } from "@/lib/storyblok";
 import { StoryblokServerComponent } from "@storyblok/react/rsc";
 
+export const dynamic = "force-dynamic";
 
 export default async function PostPage({ params }) {
 

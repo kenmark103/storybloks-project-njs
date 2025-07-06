@@ -2,7 +2,10 @@ import { getStoryblokApi } from '@/lib/storyblok';
 import { StoryblokStory } from '@storyblok/react/rsc';
 import { draftMode } from 'next/headers';
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
+
  const isPreview = (await draftMode()).isEnabled;
 
 const storyblokApi = getStoryblokApi();

@@ -26,7 +26,6 @@ export default function RootLayout({
   return (
       <html lang="en">
         <head>
-        {/* loads the Storyblok Bridge before React hydrates */}
         <Script
           src="//app.storyblok.com/f/storyblok-v2-latest.js" type="text/javascript"
           strategy="afterInteractive"
