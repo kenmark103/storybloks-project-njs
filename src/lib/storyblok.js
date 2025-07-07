@@ -10,7 +10,7 @@ import PostGridHolder from "@/components/PostGridHolder";
 import PostsGrid from "@/components/PostsGrid";
 
 export const { getStoryblokApi, StoryblokComponent } = storyblokInit({
-  accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
+  accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
   bridge: true,
   use: [apiPlugin],
   components: {
