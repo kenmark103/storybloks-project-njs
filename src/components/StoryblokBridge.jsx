@@ -26,3 +26,11 @@ export default function StoryblokBridgeComponent() {
 
   return null;
 }
+
+export function initStoryblokBridge(){
+    loadStoryblokBridge().then(()=>{
+        if (typeof window.StoryblokBridge !== 'undefined'){
+            new window.StoryblokBridge();
+        }
+    })
+}
