@@ -1,4 +1,4 @@
-import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
+import { apiPlugin, storyblokInit, getStoryblokApi } from "@storyblok/react/rsc";
 import Page from "@/components/Page";
 import Hero from "@/components/Hero";
 import Content from "@/components/Content";
@@ -9,7 +9,7 @@ import Top from "@/components/Top";
 import PostGridHolder from "@/components/PostGridHolder";
 import PostsGrid from "@/components/PostsGrid";
 
-export const { getStoryblokApi, StoryblokComponent } = storyblokInit({
+storyblokInit({
   accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
   bridge: true,
   use: [apiPlugin],
@@ -28,3 +28,5 @@ export const { getStoryblokApi, StoryblokComponent } = storyblokInit({
     region: "eu",
   },
 });
+
+export { getStoryblokApi };
