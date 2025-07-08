@@ -3,6 +3,12 @@ import { notFound } from "next/navigation";
 import StoryblokProvider from '@/components/StoryblokBridge';
 import { getStoryblokApi } from '@/lib/storyblok';
 import { StoryblokServerComponent } from "@storyblok/react/rsc";
+import dynamic from 'next/dynamic';
+
+const StoryblokProvider = dynamic(
+  () => import("@/components/StoryblokBridge"),
+  { ssr: false }
+);
 
 export const dynamic = "force-dynamic";
 
