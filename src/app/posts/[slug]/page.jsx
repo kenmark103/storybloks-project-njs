@@ -1,6 +1,6 @@
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-import StoryblokProvider from '@/components/StoryblokProvider';
+import StoryblokProvider from '@/components/StoryblokBridge';
 import { getStoryblokApi } from '@/lib/storyblok';
 import { StoryblokServerComponent } from "@storyblok/react/rsc";
 
