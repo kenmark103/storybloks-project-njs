@@ -26,6 +26,9 @@ export default function RootLayout({
 }>) {
   return (
       <html lang="en">
+        <head>
+          <script src="//app.storyblok.com/f/storyblok-v2-latest.js" async /> 
+        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
