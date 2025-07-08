@@ -27,8 +27,7 @@ export default function RootLayout({
   return (
    
       <html lang="en">
-           <head>
-        {/* ensure this runs before React */}
+        <head>
         <Script
           src="https://app.storyblok.com/f/storyblok-v2-latest.js"
           strategy="beforeInteractive"
