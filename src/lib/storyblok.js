@@ -9,9 +9,11 @@ import Top from "@/components/Top";
 import PostGridHolder from "@/components/PostGridHolder";
 import PostsGrid from "@/components/PostsGrid";
 
+config.bridge = true;
+
 storyblokInit({
   accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
-  bridge: false,
+  bridge: true,
   use: [apiPlugin],
   components: {
     page: Page,
@@ -29,4 +31,7 @@ storyblokInit({
   },
 });
 
-export { getStoryblokApi };
+export function getStoryblokApi() {
+  // wrapper for RSC API
+  return import('@storyblok/react/rsc').then(m => m.getStoryblokApi());
+}

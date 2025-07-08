@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import StoryblokBridgeComponent from "@/components/StoryblokBridge"
+import StoryblokProvider from "@/components/StoryblokBridge"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,16 +25,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+   
       <html lang="en">
-        <head>
-          <script src="//app.storyblok.com/f/storyblok-v2-latest.js" async /> 
-        </head>
+         <head>
+        {/* load Storyblok bridge script for live editing */}
+        <script
+          defer
+          src="//app.storyblok.com/f/storyblok-v2-latest.js"
+        />
+      </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-            {children}
-             <StoryblokBridgeComponent />
-         
+                      {children}         
         </body>
       </html>
     
