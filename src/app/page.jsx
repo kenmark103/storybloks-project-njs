@@ -1,4 +1,4 @@
-
+"use client"
 
 import { getStoryblokApi } from '@/lib/storyblok';
 import { StoryblokStory } from '@storyblok/react/rsc';
@@ -14,6 +14,8 @@ export default async function Home() {
   });
 
   return (
+    <StoryblokProvider story={data.story}>
       <StoryblokStory story={data.story} />
+    </StoryblokProvider>
   );
 }
