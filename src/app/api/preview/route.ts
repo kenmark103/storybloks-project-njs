@@ -1,16 +1,19 @@
 // app/api/preview/route.ts
 import { draftMode } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const slug  = searchParams.get("slug") || "";
+  const token   = searchParams.get("secret");
+  const slug    = searchParams.get("slug") || "";
 
-  (await draftMode()).enable();
+  if (token !== process.env.STORYBLOK_PREVIEW_TOKEN) {
+    return NextResponse.json({ message: "Invalid token" }, { status: 401 });
+  }
 
-  const base = request.url; 
-  const redirectPath = slug === "" ? "/" : `/${slug}`;
-  const redirectUrl  = new URL(redirectPath, base);
+  const draft = await draftMode();
+  draft.enable();
 
-  return NextResponse.redirect(redirectUrl);
+  const url = slug.startsWith("/") ? slug : `/${slug}`;
+  return NextResponse.redirect(url);
 }
