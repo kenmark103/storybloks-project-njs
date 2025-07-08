@@ -1,7 +1,7 @@
 "use client";
 
 import { useStoryblokBridge } from "@storyblok/js";
-import { useEffect, useRef } from "react";
+import { useEffect} from "react";
 
 export default function StoryblokBridge({ story, children }) {
  
@@ -9,7 +9,7 @@ export default function StoryblokBridge({ story, children }) {
     resolveRelations: ["featured_item"],
   });
 
- 
+ //debug the bridge
   useEffect(() => {
     console.log("[Bridge] useStoryblokBridge() called");
     if (typeof window === "undefined") {
