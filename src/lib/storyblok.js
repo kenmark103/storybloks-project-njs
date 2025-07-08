@@ -1,4 +1,4 @@
-import { apiPlugin, storyblokInit, getStoryblokApi } from "@storyblok/react/rsc";
+import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
 import Page from "@/components/Page";
 import Hero from "@/components/Hero";
 import Content from "@/components/Content";
@@ -8,8 +8,6 @@ import Post from "@/components/Post";
 import Top from "@/components/Top";
 import PostGridHolder from "@/components/PostGridHolder";
 import PostsGrid from "@/components/PostsGrid";
-
-config.bridge = true;
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
@@ -31,7 +29,5 @@ storyblokInit({
   },
 });
 
-export function getStoryblokApi() {
-  // wrapper for RSC API
-  return import('@storyblok/react/rsc').then(m => m.getStoryblokApi());
-}
+export const getStoryblokApi = () =>
+  import('@storyblok/react/rsc').then((m) => m.getStoryblokApi());

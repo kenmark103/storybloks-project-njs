@@ -1,3 +1,7 @@
+"use client";
+
+import { useStoryblokBridge } from "@storyblok/js"; 
+
 export default function StoryblokProvider({ story, children }) {
  
   useStoryblokBridge(story, {
