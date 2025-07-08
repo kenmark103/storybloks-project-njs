@@ -1,7 +1,8 @@
+
+
 import { getStoryblokApi } from '@/lib/storyblok';
 import { StoryblokStory } from '@storyblok/react/rsc';
 import { draftMode } from 'next/headers';
-import StoryblokProvider from '@/components/StoryblokBridge.client';
 
 export const dynamic = "force-dynamic";
 
@@ -13,8 +14,6 @@ export default async function Home() {
   });
 
   return (
-    <StoryblokProvider story={data.story}>
       <StoryblokStory story={data.story} />
-    </StoryblokProvider>
   );
 }

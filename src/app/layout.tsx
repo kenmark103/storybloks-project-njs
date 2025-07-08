@@ -1,8 +1,9 @@
+"use client"
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import BridgeLoader from '@/components/BridgeLoader.client';
+import Script from "next/script";
 
 
 const geistSans = Geist({
@@ -15,11 +16,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Storyblok Next Js App",
-  description: "Created by Ken",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,10 +25,17 @@ export default function RootLayout({
    
       <html lang="en">
 
+        <head>
+          <Script
+                src="https://app.storyblok.com/f/storyblok-v2-latest.js"
+                strategy="beforeInteractive"
+                onLoad={() => console.log("✅ Storyblok Bridge loaded")}
+              />
+        </head>
+
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-            <BridgeLoader />
             {children}         
         </body>
       </html>
